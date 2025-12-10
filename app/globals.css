@@ -1,29 +1,77 @@
 @import "tailwindcss";
 
+/* -------------------------------------------------------
+   Global Fade Animations — slow, elegant, architectural
+-------------------------------------------------------- */
 @layer utilities {
   .animate-fadeIn {
-    animation: fadeIn 0.9s ease forwards;
+    animation: fadeIn 1.4s ease-out forwards;
     opacity: 0;
   }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-}
 
-@layer utilities {
-  .animate-fadeIn {
-    animation: fadeIn 0.9s ease forwards;
-    opacity: 0;
-  }
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateY(14px);
+      transform: translateY(20px);
     }
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
+
+  /* Stagger utilities */
+  .fade-delay-1 {
+    animation-delay: 0.2s;
+  }
+  .fade-delay-2 {
+    animation-delay: 0.35s;
+  }
+  .fade-delay-3 {
+    animation-delay: 0.5s;
+  }
+}
+
+/* -------------------------------------------------------
+   Smooth Scrolling + Section Snap Support
+-------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optional: Global snap behavior (enable if desired)
+section {
+  scroll-snap-align: start;
+}
+*/
+
+/* -------------------------------------------------------
+   Typography + Color Theme (clean, minimal, modern)
+-------------------------------------------------------- */
+body {
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #ffffff; /* Pure clean white */
+  color: #111827; /* Neutral Gray-900 */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* -------------------------------------------------------
+   Carousel & Overflow Behavior
+-------------------------------------------------------- */
+
+/* Hide scrollbars (used for ProjectCarousel, etc.) */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* -------------------------------------------------------
+   Utility: Subtle soft shadow for cards
+-------------------------------------------------------- */
+.soft-shadow {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
 }

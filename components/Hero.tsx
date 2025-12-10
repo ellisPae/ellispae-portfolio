@@ -2,7 +2,7 @@
 
 export default function Hero() {
   return (
-    <section className="w-full flex justify-center px-6">
+    <section className="w-full flex justify-center px-6 snap-start min-h-screen">
       <div className="max-w-5xl w-full pt-32 pb-24 animate-fadeIn">
         {/* Heading */}
         <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
