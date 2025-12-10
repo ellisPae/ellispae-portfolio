@@ -7,20 +7,24 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-white/70 border-b border-gray-200/60 shadow-sm">
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <nav
+      className="fixed top-0 left-0 w-full z-50 bg-white border-b border-gray-200 
+                shadow-[0_2px_10px_rgba(0,0,0,0.06)] 
+                rounded-b-2xl"
+    >
+      <div className="max-w-7xl mx-auto px-10 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-1">
-          <span className="text-xl font-bold text-gray-900 tracking-tight">
+        <Link href="/" className="flex items-center space-x-2">
+          <span className="text-xl font-semibold text-gray-950 tracking-tight">
             Ellis
           </span>
-          <span className="text-xl font-bold text-blue-600 tracking-tight">
+          <span className="text-xl font-semibold text-gray-950 tracking-tight">
             Pae
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8 text-gray-600 font-medium">
+        <div className="hidden md:flex items-center gap-8 text-gray-600 font-semibold text-[0.95rem]">
           {["About", "Projects", "Contact"].map((label) => (
             <Link
               key={label}
