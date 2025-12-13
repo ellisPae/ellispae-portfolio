@@ -2,27 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import type { Project } from "@/types/project";
 
-interface ProjectCardProps {
-  title: string;
-  description: string;
-  image: string;
-  tech: string[];
-  links: {
-    caseStudy?: string;
-    demo?: string;
-    github?: string;
-    live?: string;
-  };
-}
-
-export default function ProjectCard({
-  title,
-  description,
-  image,
-  tech,
-  links,
-}: ProjectCardProps) {
+const ProjectCard = ({ title, description, image, tech, links }: Project) => {
   return (
     <div className="group bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 min-h-[520px] flex flex-col justify-between">
       {/* Image */}
@@ -96,4 +78,6 @@ export default function ProjectCard({
       </div>
     </div>
   );
-}
+};
+
+export default ProjectCard;

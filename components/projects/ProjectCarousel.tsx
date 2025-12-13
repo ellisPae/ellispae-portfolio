@@ -2,21 +2,9 @@
 
 import { useRef, useEffect, useState } from "react";
 import ProjectCard from "./ProjectCard";
+import type { Project } from "@/types/project";
 
-interface Project {
-  title: string;
-  description: string;
-  image: string;
-  tech: string[];
-  links: {
-    caseStudy?: string;
-    demo?: string;
-    github?: string;
-    live?: string;
-  };
-}
-
-export default function ProjectCarousel({ projects }: { projects: Project[] }) {
+const ProjectCarousel = ({ projects }: { projects: Project[] }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -98,4 +86,6 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
       </div>
     </div>
   );
-}
+};
+
+export default ProjectCarousel;
