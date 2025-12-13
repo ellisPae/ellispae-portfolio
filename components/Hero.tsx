@@ -1,6 +1,6 @@
 "use client";
 
-export default function Hero() {
+const Hero = () => {
   return (
     <section className="w-full flex justify-center px-6 snap-start min-h-screen">
       <div className="max-w-5xl w-full pt-32 pb-24 animate-fadeIn">
@@ -29,4 +29,6 @@ export default function Hero() {
       </div>
     </section>
   );
-}
+};
+
+export default Hero;

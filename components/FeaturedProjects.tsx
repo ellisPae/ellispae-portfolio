@@ -1,25 +1,9 @@
 "use client";
 
 import ProjectCarousel from "./projects/ProjectCarousel";
+import type { Project } from "@/types/project";
 
-type Project = {
-  title: string;
-  description: string;
-  image: string;
-  tech: string[];
-  links: {
-    caseStudy?: string;
-    demo?: string;
-    github?: string;
-    live?: string;
-  };
-};
-
-export default function FeaturedProjects({
-  projects,
-}: {
-  projects: Project[];
-}) {
+const FeaturedProjects = ({ projects }: { projects: Project[] }) => {
   if (!projects || projects.length === 0) {
     return <div>No projects available.</div>;
   }
@@ -45,4 +29,6 @@ export default function FeaturedProjects({
       </div>
     </section>
   );
-}
+};
+
+export default FeaturedProjects;
