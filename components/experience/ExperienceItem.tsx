@@ -15,12 +15,12 @@ export function ExperienceItem({ experience }: ExperienceItemProps) {
       <div className="flex-1">
         <h3 className="text-base font-semibold">{role}</h3>
 
-        <p className="text-sm text-neutral-600 mt-1 tracking-wide">
+        <p className="text-[0.8125rem] text-neutral-600 mt-1 tracking-wide">
           {company}
           {date && ` · ${date}`}
         </p>
 
-        <ul className="mt-2 space-y-1.5 text-sm text-neutral-700 list-disc pl-5">
+        <ul className="mt-1.5 space-y-1 text-sm text-neutral-700 list-disc pl-5">
           {bullets.map((bullet, i) => (
             <li key={i}>{bullet}</li>
           ))}

@@ -8,11 +8,8 @@ export const experience: Experience[] = [
     bullets: [
       "Built and maintained the church’s production website using React, Next.js, TypeScript, and AWS S3 to deliver dynamic content for sermons, events, and community resources",
       "Designed and launched a sermon platform powered by Sanity CMS and GraphQL, featuring modern layouts, summaries, and advanced filtering to improve discoverability and engagement",
-      "Rebuilt the post category system with automated slug generation and validation, improving URL consistency and long-term content organization",
-      "Streamlined content management through Sanity CMS automation for blogs, news, and multimedia publishing",
-      "Integrated third-party services such as Typeform for sign-ups and Tithely for online giving to expand accessibility and engagement",
-      "Optimized site performance and SEO to improve page speed, search visibility, and overall user experience",
-      "Diagnosed and resolved production issues, automating workflows to reduce manual maintenance and improve publishing reliability",
+      "Improved content organization, URL consistency, and publishing workflows through CMS automation and structured content models",
+      "Optimized site performance, SEO, and reliability while integrating third-party services to expand accessibility and reduce manual maintenance",
     ],
     tech: ["React", "Next.js", "Tailwind CSS", "Sanity", "GraphQL", "AWS"],
   },
