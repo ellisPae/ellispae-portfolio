@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import FeaturedProjects from "@/components/FeaturedProjects";
 import { projects } from "@/lib/projects";
-// import Experience from "@/components/Experience";
+import { Experience } from "@/components/experience/Experience";
 // import Skills from "@/components/Skills";
 // import About from "@/components/About";
 // import Contact from "@/components/Contact";
@@ -14,16 +14,17 @@ const HomePage = () => {
       <Navbar />
       <main
         className="pt-24 min-h-screen w-full flex flex-col items-center 
-                 bg-white text-gray-900 px-4
-                 snap-y snap-mandatory overflow-y-scroll h-screen"
+                   bg-white text-gray-900 px-4
+                   snap-y snap-proximity overflow-y-scroll h-screen"
       >
         <Hero />
         <FeaturedProjects projects={projects} />
+        <Experience />
 
         {/* Divider Placeholder */}
         <div className="w-full max-w-4xl mt-20 border-t border-gray-200" />
 
-        <section className="max-w-4xl text-center py-16 snap-start min-h-screen">
+        <section className="max-w-4xl text-center py-16 min-h-screen">
           <h2 className="text-3xl font-semibold mb-4">Prototype Area</h2>
           <p className="text-gray-700 leading-relaxed">
             Use this space to test components like your upcoming About section,
