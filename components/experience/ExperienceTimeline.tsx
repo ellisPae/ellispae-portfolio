@@ -1,6 +1,8 @@
-import { motion } from "framer-motion";
-import { experience } from "@/lib/experienceData";
-import { ExperienceItem } from "./ExperienceItem";
+import { motion } from 'framer-motion';
+
+import { experience } from '@/lib/experienceData';
+
+import { ExperienceItem } from './ExperienceItem';
 
 export function ExperienceTimeline() {
   return (

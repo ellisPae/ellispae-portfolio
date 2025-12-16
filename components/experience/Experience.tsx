@@ -1,9 +1,10 @@
 "use client";
 
-import { ExperienceTimeline } from "./ExperienceTimeline";
 import { motion } from "framer-motion";
 
-export function Experience() {
+import { ExperienceTimeline } from "./ExperienceTimeline";
+
+const Experience = () => {
   return (
     <motion.section
       id="experience"
@@ -17,4 +18,6 @@ export function Experience() {
       <ExperienceTimeline />
     </motion.section>
   );
-}
+};
+
+export default Experience;

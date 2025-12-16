@@ -1,10 +1,10 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import FeaturedProjects from "@/components/FeaturedProjects";
+import FeaturedProjects from "@/components/projects/FeaturedProjects";
 import { projects } from "@/lib/projects";
-import { Experience } from "@/components/experience/Experience";
+import Experience from "@/components/experience/Experience";
 // import Skills from "@/components/Skills";
-// import About from "@/components/About";
+import About from "@/components/about/About";
 // import Contact from "@/components/Contact";
 // import Footer from "@/components/Footer";
 
@@ -20,6 +20,7 @@ const HomePage = () => {
         <Hero />
         <FeaturedProjects projects={projects} />
         <Experience />
+        <About />
 
         {/* Divider Placeholder */}
         <div className="w-full max-w-4xl mt-20 border-t border-gray-200" />
