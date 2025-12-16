@@ -1,7 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import FeaturedProjects from "@/components/projects/FeaturedProjects";
-import { projects } from "@/lib/projects";
 import Experience from "@/components/experience/Experience";
 import Skills from "@/components/skills/Skills";
 import About from "@/components/about/About";
@@ -18,7 +17,7 @@ const HomePage = () => {
                    snap-y snap-proximity overflow-y-scroll h-screen"
       >
         <Hero />
-        <FeaturedProjects projects={projects} />
+        <FeaturedProjects />
         <Experience />
         <Skills />
         <About />
