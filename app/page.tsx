@@ -3,7 +3,7 @@ import Hero from "@/components/Hero";
 import FeaturedProjects from "@/components/projects/FeaturedProjects";
 import { projects } from "@/lib/projects";
 import Experience from "@/components/experience/Experience";
-// import Skills from "@/components/Skills";
+import Skills from "@/components/skills/Skills";
 import About from "@/components/about/About";
 // import Contact from "@/components/Contact";
 // import Footer from "@/components/Footer";
@@ -20,6 +20,7 @@ const HomePage = () => {
         <Hero />
         <FeaturedProjects projects={projects} />
         <Experience />
+        <Skills />
         <About />
 
         {/* Divider Placeholder */}
