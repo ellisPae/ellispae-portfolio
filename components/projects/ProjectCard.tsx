@@ -1,7 +1,8 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
+
 import type { Project } from "@/types/project";
 
 const ProjectCard = ({ title, description, image, tech, links }: Project) => {

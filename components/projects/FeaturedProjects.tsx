@@ -1,6 +1,7 @@
 "use client";
 
-import ProjectCarousel from "./projects/ProjectCarousel";
+import ProjectCarousel from './ProjectCarousel';
+
 import type { Project } from "@/types/project";
 
 const FeaturedProjects = ({ projects }: { projects: Project[] }) => {

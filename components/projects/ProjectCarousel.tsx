@@ -1,7 +1,9 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
-import ProjectCard from "./ProjectCard";
+import { useEffect, useRef, useState } from 'react';
+
+import ProjectCard from './ProjectCard';
+
 import type { Project } from "@/types/project";
 
 const ProjectCarousel = ({ projects }: { projects: Project[] }) => {
