@@ -5,7 +5,7 @@ import { projects } from "@/lib/projects";
 import Experience from "@/components/experience/Experience";
 import Skills from "@/components/skills/Skills";
 import About from "@/components/about/About";
-// import Contact from "@/components/Contact";
+import Contact from "@/components/contact/Contact";
 // import Footer from "@/components/Footer";
 
 const HomePage = () => {
@@ -22,6 +22,7 @@ const HomePage = () => {
         <Experience />
         <Skills />
         <About />
+        <Contact />
 
         {/* Divider Placeholder */}
         <div className="w-full max-w-4xl mt-20 border-t border-gray-200" />
