@@ -9,7 +9,7 @@ export const projects: Project[] = [
     tech: ["Next.js", "Tailwind", "Django REST", "PostgreSQL", "OpenAI API"],
     links: {
       caseStudy: "/case-studies/veritas-hire",
-      demo: "https://veritas-hire-demo.com",
+      demo: "https://veritas-hire.vercel.app",
       github: "https://github.com/ellispae/veritas-hire",
     },
   },
