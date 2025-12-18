@@ -4,6 +4,7 @@ import FeaturedProjects from "@/components/projects/FeaturedProjects";
 import Experience from "@/components/experience/Experience";
 import Skills from "@/components/skills/Skills";
 import About from "@/components/about/About";
+import BeyondCode from "@/components/beyond-code/BeyondCode";
 import Contact from "@/components/contact/Contact";
 import Footer from "@/components/footer/Footer";
 
@@ -22,6 +23,7 @@ const HomePage = () => {
         <Experience />
         <Skills />
         <About />
+        <BeyondCode />
         <Contact />
       </main>
       <Footer />
