@@ -2,8 +2,7 @@
 
 import { motion } from "framer-motion";
 import GolfModule from "./modules/golf/GolfModule";
-// import MusicModule from "./modules/MusicModule";
-// import ArticlesModule from "./modules/ArticlesModule";
+import MusicModule from "./modules/music/MusicModule";
 
 const BeyondCode = () => {
   return (
@@ -16,12 +15,15 @@ const BeyondCode = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <div className="flex flex-col justify-center min-h-[calc(100vh-5rem)]">
-        <h2 className="text-3xl font-semibold mb-10">Beyond Code</h2>
-
-        <div className="space-y-20">
+        <h2 className="text-3xl font-semibold mb-3">Beyond Code</h2>
+        <p className="text-sm text-neutral-500 mb-10 max-w-2xl">
+          A few things I enjoy outside of building software.
+        </p>
+        <div className="space-y-16">
           <GolfModule />
-          {/* <MusicModule /> */}
-          {/* <ArticlesModule /> */}
+          <div className="border-t border-neutral-300/60 pt-20">
+            <MusicModule />
+          </div>
         </div>
       </div>
     </motion.section>
