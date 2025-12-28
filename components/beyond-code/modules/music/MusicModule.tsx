@@ -9,7 +9,7 @@ const MusicModule = () => {
         gives a small sense of my personality and taste.
       </p>
 
-      <div className="rounded-lg overflow-hidden border border-neutral-200">
+      <div className="rounded-lg overflow-hidden">
         <iframe
           src="https://open.spotify.com/embed/playlist/3QH1lbhhW9jzH3y0xDpA66?utm_source=generator"
           width="100%"
