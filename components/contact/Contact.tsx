@@ -58,6 +58,29 @@ export default function Contact() {
         to reach out.
       </p>
 
+      <div className="mb-12 grid gap-4 sm:grid-cols-2 text-sm text-neutral-700 max-w-xl">
+        <a
+          href="mailto:ellis.h.pae@gmail.com"
+          className="rounded-xl border border-neutral-200 px-4 py-3 hover:border-neutral-300 transition"
+        >
+          <p className="text-xs uppercase tracking-wide text-neutral-500 mb-1">
+            Email
+          </p>
+          <p className="font-medium">ellis.h.pae@gmail.com</p>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/ellisPae/"
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-xl border border-neutral-200 px-4 py-3 hover:border-neutral-300 transition"
+        >
+          <p className="text-xs uppercase tracking-wide text-neutral-500 mb-1">
+            LinkedIn
+          </p>
+          <p className="font-medium">Connect professionally</p>
+        </a>
+      </div>
+
       {isSubmitSuccessful && (
         <motion.p
           className="text-green-600 mb-6 font-medium"

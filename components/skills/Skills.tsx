@@ -16,7 +16,11 @@ const Skills = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <div className="w-full">
-        <h2 className="text-3xl font-semibold tracking-tight mb-10">Skills</h2>
+        <h2 className="text-3xl font-semibold tracking-tight mb-4">Skills</h2>
+        <p className="text-neutral-600 max-w-2xl mb-10 leading-relaxed">
+          A focused toolkit for building reliable products, from frontend
+          systems and design collaboration to backend services and deployment.
+        </p>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-x-12 gap-y-8">
           {Object.entries(skills).map(([category, items]) => (

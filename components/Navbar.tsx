@@ -1,10 +1,18 @@
 "use client";
 
-import Link from 'next/link';
-import { useState } from 'react';
+import Link from "next/link";
+import { useState } from "react";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const navItems = [
+    { label: "About", href: "#about" },
+    { label: "Projects", href: "#projects" },
+    { label: "Experience", href: "#experience" },
+    { label: "Skills", href: "#skills" },
+    { label: "Beyond Code", href: "#beyond-code" },
+    { label: "Contact", href: "#contact" },
+  ];
 
   return (
     <nav
@@ -24,14 +32,14 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8 text-gray-600 font-semibold text-[0.95rem]">
-          {["About", "Projects", "Contact"].map((label) => (
+        <div className="hidden md:flex items-center gap-6 text-gray-600 font-semibold text-[0.95rem]">
+          {navItems.map((item) => (
             <Link
-              key={label}
-              href={`#${label.toLowerCase()}`}
+              key={item.href}
+              href={item.href}
               className="hover:text-gray-900 transition-colors duration-200 relative group"
             >
-              {label}
+              {item.label}
               <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-blue-600 rounded-full transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
@@ -54,14 +62,14 @@ const Navbar = () => {
       {open && (
         <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-200 shadow-xl">
           <div className="flex flex-col items-center py-4 space-y-4 text-gray-800 font-medium">
-            {["About", "Projects", "Contact"].map((label) => (
+            {navItems.map((item) => (
               <Link
-                key={label}
-                href={`#${label.toLowerCase()}`}
+                key={item.href}
+                href={item.href}
                 onClick={() => setOpen(false)}
                 className="hover:text-blue-600 transition"
               >
-                {label}
+                {item.label}
               </Link>
             ))}
           </div>
