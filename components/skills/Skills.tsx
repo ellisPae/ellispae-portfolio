@@ -8,15 +8,14 @@ const Skills = () => {
   return (
     <motion.section
       id="skills"
-      style={{ scrollMarginTop: "128px" }}
-      className="max-w-6xl mx-auto px-6 py-16 snap-start min-h-screen flex items-center"
+      className="max-w-6xl mx-auto px-6 py-10 snap-start min-h-screen flex items-center scroll-mt-5"
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <div className="w-full">
-        <h2 className="text-3xl font-semibold tracking-tight mb-10">Skills</h2>
+        <h2 className="text-3xl font-semibold tracking-tight mb-7">Skills</h2>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-x-12 gap-y-8">
           {Object.entries(skills).map(([category, items]) => (
