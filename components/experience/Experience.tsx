@@ -8,13 +8,16 @@ const Experience = () => {
   return (
     <motion.section
       id="experience"
-      className="max-w-5xl mx-auto px-6 pt-28 pb-28 snap-start scroll-mt-1"
-      initial={{ opacity: 0, y: 40 }}
+      className="w-full max-w-6xl mx-auto px-6 sm:px-8 pt-12 sm:pt-14 pb-20 snap-start scroll-mt-17"
+      initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.55, ease: "easeOut" }}
     >
-      <h2 className="text-2xl font-semibold mb-6">Experience</h2>
+      <div className="flex items-baseline justify-between gap-4">
+        <h2 className="text-2xl font-semibold">Experience</h2>
+      </div>
+
       <ExperienceTimeline />
     </motion.section>
   );
