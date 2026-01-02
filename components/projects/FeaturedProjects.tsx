@@ -12,7 +12,7 @@ const FeaturedProjects = () => {
   return (
     <section
       id="projects"
-      className="w-full min-h-screen snap-start flex items-center pt-36 pb-28"
+      className="w-full min-h-screen snap-start flex items-center pt-36 pb-28 scroll-mt-2"
     >
       <div className="mx-auto max-w-6xl px-6">
         <h2 className="text-4xl font-bold tracking-tight mb-4">

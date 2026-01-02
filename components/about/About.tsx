@@ -6,7 +6,7 @@ const About = () => {
   return (
     <motion.section
       id="about"
-      className="max-w-5xl mx-auto px-6 py-24 snap-start min-h-screen flex items-center"
+      className="max-w-5xl mx-auto px-6 py-24 snap-start min-h-screen flex items-center scroll-mt-3"
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}

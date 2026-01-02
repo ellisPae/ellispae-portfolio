@@ -1,13 +1,12 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
-import { experience } from '@/lib/experienceData';
+import { experience } from "@/lib/experienceData";
 
-import { ExperienceItem } from './ExperienceItem';
+import { ExperienceItem } from "./ExperienceItem";
 
 export function ExperienceTimeline() {
   return (
-    <div className="relative mt-10">
-      {/* Vertical line */}
+    <div className="relative mt-6" id="experience-timeline">
       <div className="absolute left-4 sm:left-6 top-0 h-full w-px bg-neutral-200" />
 
       <div className="space-y-10">

@@ -8,7 +8,7 @@ const BeyondCode = () => {
   return (
     <motion.section
       id="beyond-code"
-      className="max-w-5xl mx-auto px-6 py-20 snap-start min-h-screen"
+      className="max-w-5xl mx-auto px-6 py-20 snap-start min-h-screen scroll-mt-18"
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-120px" }}

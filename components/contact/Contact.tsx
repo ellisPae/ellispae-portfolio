@@ -44,7 +44,7 @@ export default function Contact() {
   return (
     <motion.section
       id="contact"
-      className="max-w-5xl mx-auto px-6 py-24 min-h-screen snap-start flex flex-col justify-center"
+      className="max-w-5xl mx-auto px-6 py-24 min-h-screen snap-start flex flex-col justify-center scroll-mt-5"
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
