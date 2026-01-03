@@ -8,7 +8,7 @@ const Skills = () => {
   const shouldReduceMotion = useReducedMotion();
 
   const container = {
-    hidden: { opacity: 0, y: 28 },
+    hidden: { opacity: 0, y: 16 },
     show: {
       opacity: 1,
       y: 0,
@@ -22,7 +22,7 @@ const Skills = () => {
   };
 
   const item = {
-    hidden: { opacity: 0, y: 10 },
+    hidden: { opacity: 0, y: 6 },
     show: {
       opacity: 1,
       y: 0,
@@ -40,11 +40,14 @@ const Skills = () => {
       viewport={{ once: true, amount: 0.25 }}
     >
       <div className="w-full">
-        <div className="flex items-baseline justify-between gap-4 mb-10">
+        <div className="max-w-2xl mb-10">
           <h2 className="text-3xl font-semibold tracking-tight">Skills</h2>
+          <p className="mt-2 text-sm text-neutral-500">
+            A snapshot of the stack, tools, and practices I use to ship.
+          </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-7">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-6">
           {Object.entries(skills).map(([category, items]) => (
             <motion.div
               key={category}
