@@ -6,44 +6,116 @@ const About = () => {
   return (
     <motion.section
       id="about"
-      className="max-w-5xl mx-auto px-6 py-24 snap-start min-h-screen flex items-center scroll-mt-3"
-      initial={{ opacity: 0, y: 24 }}
+      className="w-full max-w-5xl mx-auto px-6 sm:px-8 pt-20 pb-20 snap-start min-h-screen flex items-center scroll-mt-1"
+      initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.2, margin: "-10% 0px -10% 0px" }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="space-y-6 max-w-3xl">
-        <h2 className="text-3xl font-semibold tracking-tight">About</h2>
+      <motion.div
+        className="w-full max-w-3xl mx-auto space-y-6"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.25 }}
+        variants={{
+          hidden: { opacity: 0 },
+          show: {
+            opacity: 1,
+            transition: { staggerChildren: 0.08, delayChildren: 0.06 },
+          },
+        }}
+      >
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 10 },
+            show: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+            },
+          }}
+        >
+          <div>
+            <h2 className="text-3xl font-semibold tracking-tight">About</h2>
+            <p className="mt-2 text-sm text-neutral-500">
+              Curiosity, craft, and work that earns trust.
+            </p>
+          </div>
+        </motion.div>
 
-        <p className="text-lg text-neutral-700 leading-relaxed">
-          I’m a software engineer driven by curiosity and a deep desire to
-          understand how systems work and how they can work better. I enjoy
-          breaking down complex problems, asking thoughtful questions, and
-          shaping solutions that are clear, reliable, and built to last.
-        </p>
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 10 },
+            show: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+            },
+          }}
+        >
+          <p className="text-lg text-neutral-700 leading-relaxed">
+            I’m a software engineer driven by curiosity and a desire to
+            understand how systems work, why they break, and how to make them
+            better. I enjoy breaking down complex problems, asking good
+            questions, and shaping solutions that are clear, reliable, and built
+            to last.
+          </p>
+        </motion.div>
 
-        <p className="text-lg text-neutral-700 leading-relaxed">
-          My background spans full-stack development, quality engineering, and
-          production ownership. That range has shaped how I build software: with
-          care for the user experience, respect for long-term maintainability,
-          and an appreciation for the unseen details that make products
-          dependable in the real world.
-        </p>
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 10 },
+            show: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+            },
+          }}
+        >
+          <p className="text-lg text-neutral-700 leading-relaxed">
+            My background spans full-stack development, quality engineering, and
+            production ownership. That range has shaped how I build: with care
+            for user experience, respect for maintainability, and attention to
+            the details that make software dependable in the real world.
+          </p>
+        </motion.div>
 
-        <p className="text-lg text-neutral-700 leading-relaxed">
-          I’m motivated by work that has real impact. Software that helps
-          people, improves processes, and creates trust through thoughtful
-          design and technical excellence matters deeply to me. I’m always
-          learning, refining my craft, and looking for opportunities where
-          curiosity and purpose meet.
-        </p>
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 10 },
+            show: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+            },
+          }}
+        >
+          <p className="text-lg text-neutral-700 leading-relaxed">
+            I’m motivated by work that has real impact. Software that helps
+            people, improves processes, and creates trust through thoughtful
+            design and technical excellence matters deeply to me. I’m always
+            learning, refining my craft, and looking for roles where curiosity
+            and purpose meet.
+          </p>
+        </motion.div>
 
-        <p className="text-lg text-neutral-700 leading-relaxed">
-          Outside of work, you’ll usually find me exploring new coffee,
-          traveling, playing golf, or learning something new simply for the joy
-          of it.
-        </p>
-      </div>
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 10 },
+            show: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+            },
+          }}
+        >
+          <p className="text-lg text-neutral-700 leading-relaxed">
+            Outside of work, you’ll usually find me exploring new coffee,
+            traveling, playing golf, or learning something new simply for the
+            joy of it.
+          </p>
+        </motion.div>
+      </motion.div>
     </motion.section>
   );
 };
