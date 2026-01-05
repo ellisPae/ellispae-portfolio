@@ -6,19 +6,11 @@ const Hero = () => {
       id="hero"
       className="relative w-full overflow-hidden snap-start min-h-screen -mt-24 pt-24 flex items-center"
     >
-      {/* Full-bleed background layers */}
-      {/* Light */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-indigo-50/60 via-white to-white dark:hidden" />
 
-      {/* Dark (navy, not black) — start with the same tone as the global dark background */}
       <div className="pointer-events-none absolute inset-0 hidden dark:block bg-[#0b0f19]" />
       <div className="pointer-events-none absolute inset-0 hidden dark:block bg-gradient-to-b from-[#0b0f19] via-[#070a14] to-[#050816]" />
 
-      {/* Soft aurora glow */}
-      <div className="pointer-events-none absolute -top-56 left-1/2 h-[820px] w-[1280px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.18),transparent_60%)] dark:bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.22),transparent_58%)] blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-80 left-1/3 h-[620px] w-[1040px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.12),transparent_60%)] dark:bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.10),transparent_60%)] blur-3xl" />
-
-      {/* Subtle vignette to blend edges and add depth */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(1200px_700px_at_50%_18%,transparent_55%,rgba(0,0,0,0.05)_88%)] dark:bg-[radial-gradient(1200px_700px_at_50%_18%,transparent_55%,rgba(0,0,0,0.22)_92%)]" />
 
       <div className="relative w-full flex justify-center px-6">
@@ -29,7 +21,7 @@ const Hero = () => {
 
           <h2 className="mt-4 text-3xl md:text-4xl font-semibold tracking-tight leading-tight text-slate-700 dark:text-neutral-200">
             I build clean, modern, and{" "}
-            <span className="bg-gradient-to-r from-indigo-600 to-sky-600 bg-clip-text text-transparent dark:from-indigo-300 dark:to-sky-300">
+            <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-sky-500 bg-clip-text text-transparent dark:from-indigo-300 dark:via-violet-300 dark:to-sky-300">
               meaningful
             </span>{" "}
             digital experiences.
