@@ -8,16 +8,14 @@ import BeyondCode from "@/components/beyond-code/BeyondCode";
 import Contact from "@/components/contact/Contact";
 import Footer from "@/components/footer/Footer";
 
+const MAIN_CLASSES =
+  "pt-24 min-h-screen w-full flex flex-col items-center bg-white text-gray-900 px-4 snap-y snap-proximity scroll-smooth pb-32";
+
 const HomePage = () => {
   return (
     <>
       <Navbar />
-      <main
-        className="pt-24 min-h-screen w-full flex flex-col items-center 
-             bg-white text-gray-900 px-4
-             snap-y snap-proximity
-             pb-32"
-      >
+      <main className={MAIN_CLASSES}>
         <Hero />
         <FeaturedProjects />
         <Experience />
