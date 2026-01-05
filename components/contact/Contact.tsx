@@ -19,20 +19,15 @@ export default function Contact() {
     try {
       setSubmitError(null);
 
-      // Honeypot (client-side)
       if (data.company) return;
 
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to send message");
-      }
+      if (!response.ok) throw new Error("Failed to send message");
 
       reset();
     } catch (error) {
@@ -44,62 +39,71 @@ export default function Contact() {
   return (
     <motion.section
       id="contact"
-      className="max-w-5xl mx-auto px-6 py-24 min-h-screen snap-start flex flex-col justify-center scroll-mt-5"
+      className="max-w-5xl mx-auto px-6 pt-12 pb-20 snap-start min-h-[calc(100vh-6rem)] flex flex-col justify-center scroll-mt-24"
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <h2 className="text-3xl font-semibold mb-6">Contact</h2>
+      <h2 className="text-3xl font-semibold mb-4">Contact</h2>
 
-      <p className="text-neutral-700 max-w-xl mb-12 leading-relaxed">
+      <p className="text-neutral-700 max-w-xl mb-10 leading-relaxed">
         I’m always open to thoughtful conversations, new opportunities, or
         interesting problems worth solving. If you’d like to connect, feel free
         to reach out.
       </p>
 
       {isSubmitSuccessful && (
-        <motion.p
-          className="text-green-600 mb-6 font-medium"
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+        <motion.div
+          className="mb-6 inline-flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-emerald-800"
+          initial={{ opacity: 0, y: 10, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
+          role="status"
+          aria-live="polite"
         >
-          Thanks! Your message has been sent.
-        </motion.p>
+          <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-600 text-white text-sm">
+            ✓
+          </span>
+          <span className="font-medium">
+            Thanks! Your message has been sent.
+          </span>
+        </motion.div>
       )}
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full max-w-xl space-y-6"
+        className="w-full max-w-xl space-y-5"
         noValidate
       >
-        {/* Name */}
-        <div className="flex flex-col">
+        <div className="flex flex-col" id="name_field">
           <label htmlFor="name" className="text-sm font-medium mb-1">
             Name
           </label>
           <input
-            id="name"
+            id="name_input"
+            autoComplete="name"
+            aria-invalid={!!errors.name}
             {...register("name", { required: "Name is required" })}
-            className="border border-neutral-300 rounded-md px-4 py-2
+            className="border border-neutral-300 rounded-lg px-4 py-2.5 bg-white/60
                        focus:outline-none focus:ring-2 focus:ring-neutral-900"
           />
           {errors.name && (
-            <span className="text-sm text-red-600 mt-1">
+            <span className="text-sm text-red-600 mt-1.5">
               {errors.name.message}
             </span>
           )}
         </div>
 
-        {/* Email */}
-        <div className="flex flex-col">
+        <div className="flex flex-col" id="email_field">
           <label htmlFor="email" className="text-sm font-medium mb-1">
             Email
           </label>
           <input
-            id="email"
+            id="email_input"
             type="email"
+            autoComplete="email"
+            aria-invalid={!!errors.email}
             {...register("email", {
               required: "Email is required",
               pattern: {
@@ -107,38 +111,35 @@ export default function Contact() {
                 message: "Please enter a valid email",
               },
             })}
-            className="border border-neutral-300 rounded-md px-4 py-2
+            className="border border-neutral-300 rounded-lg px-4 py-2.5 bg-white/60
                        focus:outline-none focus:ring-2 focus:ring-neutral-900"
           />
           {errors.email && (
-            <span className="text-sm text-red-600 mt-1">
+            <span className="text-sm text-red-600 mt-1.5">
               {errors.email.message}
             </span>
           )}
         </div>
 
-        {/* Message */}
-        <div className="flex flex-col">
+        <div className="flex flex-col" id="message_field">
           <label htmlFor="message" className="text-sm font-medium mb-1">
             Message
           </label>
           <textarea
-            id="message"
+            id="message_input"
             rows={4}
-            {...register("message", {
-              required: "Message is required",
-            })}
-            className="border border-neutral-300 rounded-md px-4 py-2
+            aria-invalid={!!errors.message}
+            {...register("message", { required: "Message is required" })}
+            className="border border-neutral-300 rounded-lg px-4 py-2.5 bg-white/60
                        focus:outline-none focus:ring-2 focus:ring-neutral-900 resize-none"
           />
           {errors.message && (
-            <span className="text-sm text-red-600 mt-1">
+            <span className="text-sm text-red-600 mt-1.5">
               {errors.message.message}
             </span>
           )}
         </div>
 
-        {/* Honeypot */}
         <input
           type="text"
           tabIndex={-1}
@@ -154,10 +155,7 @@ export default function Contact() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="self-start mt-4 px-6 py-2 rounded-md
-                     bg-neutral-900 text-white font-medium
-                     hover:bg-neutral-800 transition
-                     disabled:opacity-50"
+          className="self-start mt-3 inline-flex items-center justify-center px-6 py-2.5 rounded-xl bg-neutral-900 text-white font-medium hover:bg-neutral-800 hover:shadow-sm active:scale-[0.98] transition disabled:opacity-50"
         >
           {isSubmitting ? "Sending..." : "Send message"}
         </button>
