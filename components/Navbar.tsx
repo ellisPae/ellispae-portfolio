@@ -8,13 +8,22 @@ type NavItem = {
   href: string;
 };
 
-// Fallback offset (used if we can't measure the fixed navbar height)
-// 64px navbar + a bit of breathing room.
 const NAV_OFFSET_PX = 80;
+
+const THEME_STORAGE_KEY = "theme";
+
+function applyTheme(next: "light" | "dark") {
+  const root = document.documentElement;
+  if (next === "dark") root.classList.add("dark");
+  else root.classList.remove("dark");
+}
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [mounted, setMounted] = useState(false);
+  const [themeAnimating, setThemeAnimating] = useState(false);
   const panelRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
@@ -35,6 +44,13 @@ const Navbar = () => {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Sync theme state to whatever the pre-paint script decided
+  useEffect(() => {
+    const isDark = document.documentElement.classList.contains("dark");
+    setTheme(isDark ? "dark" : "light");
+    setMounted(true);
   }, []);
 
   // Close on Escape
@@ -128,41 +144,106 @@ const Navbar = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const toggleTheme = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    setThemeAnimating(true);
+    setTheme(next);
+    applyTheme(next);
+    localStorage.setItem(THEME_STORAGE_KEY, next);
+
+    // Let the earth spin play, then reset
+    window.setTimeout(() => setThemeAnimating(false), 700);
+  };
+
   return (
     <nav
+      id="navbar"
       className={
-        "fixed top-0 left-0 w-full z-50 border-b border-gray-200 rounded-b-2xl " +
+        "fixed top-0 left-0 w-full z-50 rounded-b-2xl " +
+        "border-b border-gray-200 dark:border-neutral-800 " +
         (scrolled
-          ? "bg-white/90 backdrop-blur-xl shadow-[0_2px_12px_rgba(0,0,0,0.08)]"
-          : "bg-white shadow-[0_2px_10px_rgba(0,0,0,0.06)]")
+          ? // When scrolled, keep blur but ensure strong contrast in dark mode
+            "bg-white/90 backdrop-blur-xl shadow-[0_2px_12px_rgba(0,0,0,0.08)] " +
+            "dark:bg-neutral-950/95 dark:backdrop-blur-xl dark:shadow-[0_2px_12px_rgba(0,0,0,0.35)]"
+          : // At top of page, use fully opaque backgrounds for maximum legibility
+            "bg-white shadow-[0_2px_10px_rgba(0,0,0,0.06)] " +
+            "dark:bg-neutral-950")
       }
       aria-label="Primary"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-10 h-16 flex items-center justify-between">
-        <Link href="#" onClick={handleLogoClick} className="flex items-center">
-          <span className="text-xl font-semibold text-gray-950 tracking-tight">
+        <Link
+          id="nav-home"
+          href="#"
+          onClick={handleLogoClick}
+          className="flex items-center"
+        >
+          <span className="text-xl font-semibold text-gray-950 dark:text-neutral-50 tracking-tight">
             Ellis Pae
           </span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-8 text-gray-600 font-semibold text-[0.95rem]">
+        <div className="hidden md:flex items-center gap-6 font-semibold text-[0.95rem]">
           {navItems.map((item) => (
             <Link
+              id={`nav-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
               key={item.href}
               href={item.href}
               onClick={handleNavClick(item.href)}
-              className="hover:text-gray-900 transition-colors duration-200 relative group focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900/30 focus-visible:ring-offset-2 rounded"
+              className="text-gray-700 dark:text-neutral-200 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 relative group focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900/30 dark:focus-visible:ring-white/20 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-neutral-950 rounded"
             >
               {item.label}
-              <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-blue-600 rounded-full transition-all duration-300 group-hover:w-full" />
+              <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-blue-600 dark:bg-indigo-400 rounded-full transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
+          <button
+            id="theme-toggle"
+            type="button"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            className="group ml-2 relative inline-flex items-center justify-center h-9 w-9
+           text-gray-700 dark:text-neutral-200
+           hover:text-gray-900 dark:hover:text-white
+           active:scale-95
+           transition-all duration-200
+           hover:rotate-6 hover:scale-[1.08]"
+          >
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            >
+              <span className="absolute -inset-2 bg-gradient-to-r from-indigo-500/10 via-sky-500/5 to-purple-500/10 blur-sm -translate-x-1/4 group-hover:translate-x-1/4 transition-transform duration-700" />
+            </span>
+            <span
+              className="relative inline-flex items-center justify-center transition-transform duration-300
+                 group-hover:scale-[1.15]"
+            >
+              <span
+                className={
+                  "theme-earth-emoji " + (themeAnimating ? "is-animating" : "")
+                }
+                aria-hidden="true"
+              >
+                🌎
+              </span>
+              {mounted ? (
+                theme === "dark" ? (
+                  <span className="text-sm">🌙</span>
+                ) : (
+                  <span className="text-sm">☀️</span>
+                )
+              ) : (
+                <span className="text-sm opacity-0">☀️</span>
+              )}
+            </span>
+          </button>
         </div>
 
         <button
+          id="mobile-menu-toggle"
           ref={buttonRef}
           type="button"
-          className="md:hidden text-gray-900 rounded-md p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900/30 focus-visible:ring-offset-2"
+          className="md:hidden text-gray-900 dark:text-neutral-100 rounded-md p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900/30 dark:focus-visible:ring-white/20 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-neutral-950"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
@@ -176,15 +257,62 @@ const Navbar = () => {
         <div
           id="mobile-nav"
           ref={panelRef}
-          className="md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-200 shadow-xl"
+          className="md:hidden bg-white/95 dark:bg-neutral-950/90 backdrop-blur-xl border-t border-gray-200 dark:border-neutral-800 shadow-xl"
         >
-          <div className="flex flex-col items-center py-5 space-y-5 text-gray-900 font-medium">
+          <div className="flex flex-col items-center py-5 space-y-5 font-medium">
+            <button
+              id="theme-toggle-mobile"
+              type="button"
+              onClick={toggleTheme}
+              aria-label={`Switch to ${
+                theme === "dark" ? "light" : "dark"
+              } mode`}
+              className="group relative inline-flex items-center justify-center h-10 w-10
+           text-gray-700 dark:text-neutral-200
+           hover:text-gray-900 dark:hover:text-white
+           active:scale-95
+           transition-all duration-200
+           hover:rotate-6 hover:scale-[1.08]"
+            >
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >
+                <span className="absolute -inset-2 bg-gradient-to-r from-indigo-500/10 via-sky-500/5 to-purple-500/10 blur-sm -translate-x-1/4 group-hover:translate-x-1/4 transition-transform duration-700" />
+              </span>
+              <span
+                className="relative inline-flex items-center justify-center transition-transform duration-300
+                 group-hover:scale-[1.15]"
+              >
+                <span
+                  className={
+                    "theme-earth-emoji " +
+                    (themeAnimating ? "is-animating" : "")
+                  }
+                  aria-hidden="true"
+                >
+                  🌍
+                </span>
+                {mounted ? (
+                  theme === "dark" ? (
+                    <span className="text-sm">🌙</span>
+                  ) : (
+                    <span className="text-sm">☀️</span>
+                  )
+                ) : (
+                  <span className="text-sm opacity-0">☀️</span>
+                )}
+              </span>
+            </button>
             {navItems.map((item) => (
               <Link
+                id={`mobile-nav-${item.label
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")}`}
                 key={item.href}
                 href={item.href}
                 onClick={handleNavClick(item.href, () => setOpen(false))}
-                className="hover:text-blue-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600/30 focus-visible:ring-offset-2 rounded px-2 py-1"
+                className="text-gray-900 dark:text-neutral-100 hover:text-blue-600 dark:hover:text-indigo-300 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600/30 dark:focus-visible:ring-indigo-300/30 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-neutral-950 rounded px-2 py-1"
               >
                 {item.label}
               </Link>
