@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
-/* Enable class-based dark mode for Tailwind v4 (so `dark:` responds to `.dark` on <html>) */
+/* Enable class-based dark mode for Tailwind v4 */
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* -------------------------------------------------------
-   Global Fade Animations — slow, elegant, architectural
+   Global Fade Animations
 -------------------------------------------------------- */
 @layer utilities {
   .animate-fadeIn {
@@ -22,7 +22,6 @@
     }
   }
 
-  /* Stagger utilities */
   .fade-delay-1 {
     animation-delay: 0.2s;
   }
@@ -35,7 +34,7 @@
 }
 
 /* -------------------------------------------------------
-   Smooth Scrolling + Section Snap Support
+   Scroll behavior
 -------------------------------------------------------- */
 html {
   scroll-behavior: smooth;
@@ -47,16 +46,17 @@ body {
 }
 
 /* -------------------------------------------------------
-   Typography + Color Theme (clean, minimal, modern)
+   Global Theme Tokens (THIS IS THE KEY PART)
 -------------------------------------------------------- */
 :root {
   --bg: #ffffff;
   --fg: #111827;
 }
 
+/* Dark navy — matches Hero background */
 html.dark {
-  --bg: #0b0f19; /* deep neutral, not pure black */
-  --fg: #e5e7eb; /* soft neutral text */
+  --bg: #050816;   /* unified dark navy */
+  --fg: #e5e7eb;   /* soft readable text */
 }
 
 body {
@@ -69,6 +69,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Proper form controls & scrollbars */
 html {
   color-scheme: light;
 }
@@ -78,7 +79,7 @@ html.dark {
 }
 
 /* -------------------------------------------------------
-   Carousel & Overflow Behavior
+   Carousel & Overflow
 -------------------------------------------------------- */
 .scrollbar-none::-webkit-scrollbar {
   display: none;
@@ -89,69 +90,35 @@ html.dark {
 }
 
 /* -------------------------------------------------------
-   Utility: Subtle soft shadow for cards
+   Utility: Soft shadow
 -------------------------------------------------------- */
 .soft-shadow {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
 }
 
-/* Theme toggle: earth spin transition */
+/* -------------------------------------------------------
+   Theme toggle animations
+-------------------------------------------------------- */
 @keyframes earthSpinPop {
-  0%   { transform: translateY(0) rotate(0deg) scale(1); opacity: 0; }
-  10%  { opacity: 1; }
-  60%  { transform: translateY(0) rotate(280deg) scale(1.06); opacity: 1; }
-  100% { transform: translateY(-2px) rotate(360deg) scale(1); opacity: 0; }
+  0%   { transform: rotate(0deg) scale(1); opacity: 0; }
+  20%  { opacity: 1; }
+  70%  { transform: rotate(300deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1); opacity: 0; }
 }
 
-.theme-earth {
-  transform-origin: 50% 50%;
-  opacity: 0;
-}
-
-.theme-earth.is-animating {
-  animation: earthSpinPop 650ms ease-in-out both;
-  transform: scale(1.15);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .theme-earth.is-animating {
-    animation: none;
-    opacity: 0;
-  }
-}
-
-/* Earth emoji spin for theme toggle */
-@keyframes earthEmojiSpin {
-  0% {
-    transform: rotate(0deg) scale(1);
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  70% {
-    transform: rotate(300deg) scale(1.2);
-    opacity: 1;
-  }
-  100% {
-    transform: rotate(360deg) scale(1);
-    opacity: 0;
-  }
-}
-
+.theme-earth,
 .theme-earth-emoji {
-  position: absolute;
-  font-size: 1.15rem;
-  line-height: 1;
   transform-origin: 50% 50%;
   opacity: 0;
 }
 
+.theme-earth.is-animating,
 .theme-earth-emoji.is-animating {
-  animation: earthEmojiSpin 650ms ease-in-out both;
+  animation: earthSpinPop 650ms ease-in-out both;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .theme-earth.is-animating,
   .theme-earth-emoji.is-animating {
     animation: none;
     opacity: 0;

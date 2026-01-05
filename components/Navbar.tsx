@@ -46,14 +46,12 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Sync theme state to whatever the pre-paint script decided
   useEffect(() => {
     const isDark = document.documentElement.classList.contains("dark");
     setTheme(isDark ? "dark" : "light");
     setMounted(true);
   }, []);
 
-  // Close on Escape
   useEffect(() => {
     if (!open) return;
     const onKeyDown = (e: KeyboardEvent) => {
@@ -66,7 +64,6 @@ const Navbar = () => {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
-  // Close on outside click
   useEffect(() => {
     if (!open) return;
 
@@ -105,13 +102,10 @@ const Navbar = () => {
     const target = document.querySelector(href) as HTMLElement | null;
     if (!target) return;
 
-    // Use the section’s CSS scroll-margin-top (Tailwind: scroll-mt-*) so each
-    // anchor can land correctly under the fixed navbar.
     const computed = window.getComputedStyle(target);
     const scrollMarginTop =
       parseFloat(computed.scrollMarginTop || "0") || NAV_OFFSET_PX;
 
-    // Temporarily disable snap so it doesn't fight the scroll.
     const main = document.querySelector("main") as HTMLElement | null;
     const prevSnapType = main?.style.scrollSnapType;
 
@@ -122,7 +116,6 @@ const Navbar = () => {
 
     window.scrollTo({ top, behavior: "smooth" });
 
-    // Restore snap after the scroll finishes.
     window.setTimeout(() => {
       if (!main) return;
       if (prevSnapType) main.style.scrollSnapType = prevSnapType;
@@ -151,7 +144,6 @@ const Navbar = () => {
     applyTheme(next);
     localStorage.setItem(THEME_STORAGE_KEY, next);
 
-    // Let the earth spin play, then reset
     window.setTimeout(() => setThemeAnimating(false), 700);
   };
 
@@ -162,11 +154,9 @@ const Navbar = () => {
         "fixed top-0 left-0 w-full z-50 rounded-b-2xl " +
         "border-b border-gray-200 dark:border-neutral-800 " +
         (scrolled
-          ? // When scrolled, keep blur but ensure strong contrast in dark mode
-            "bg-white/90 backdrop-blur-xl shadow-[0_2px_12px_rgba(0,0,0,0.08)] " +
+          ? "bg-white/90 backdrop-blur-xl shadow-[0_2px_12px_rgba(0,0,0,0.08)] " +
             "dark:bg-neutral-950/95 dark:backdrop-blur-xl dark:shadow-[0_2px_12px_rgba(0,0,0,0.35)]"
-          : // At top of page, use fully opaque backgrounds for maximum legibility
-            "bg-white shadow-[0_2px_10px_rgba(0,0,0,0.06)] " +
+          : "bg-white shadow-[0_2px_10px_rgba(0,0,0,0.06)] " +
             "dark:bg-neutral-950")
       }
       aria-label="Primary"

@@ -9,7 +9,7 @@ import Contact from "@/components/contact/Contact";
 import Footer from "@/components/footer/Footer";
 
 const MAIN_CLASSES =
-  "pt-24 min-h-screen w-full flex flex-col items-center bg-white text-gray-900 px-4 snap-y snap-proximity scroll-smooth pb-32";
+  "pt-24 min-h-screen w-full flex flex-col items-center bg-white text-gray-900 dark:bg-[#0b0f19] dark:text-neutral-100 px-0 snap-y snap-proximity scroll-smooth pb-32 overflow-x-hidden";
 
 const HomePage = () => {
   return (
