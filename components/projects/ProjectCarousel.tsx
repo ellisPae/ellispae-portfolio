@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
-import ProjectCard from './ProjectCard';
+import ProjectCard from "./ProjectCard";
 
 import type { Project } from "@/types/project";
 
@@ -41,19 +41,17 @@ const ProjectCarousel = ({ projects }: { projects: Project[] }) => {
 
   return (
     <div className="relative w-full">
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white to-transparent z-20" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white to-transparent z-20" />
       {/* Scroll Buttons */}
       <button
         onClick={() => scroll("left")}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-md shadow-md hover:bg-white px-2 py-2 rounded-full"
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-30 rounded-full px-2 py-2 backdrop-blur-md shadow-md transition bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15"
       >
         ←
       </button>
 
       <button
         onClick={() => scroll("right")}
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-md shadow-md hover:bg-white px-2 py-2 rounded-full"
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-30 rounded-full px-2 py-2 backdrop-blur-md shadow-md transition bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15"
       >
         →
       </button>
@@ -61,27 +59,31 @@ const ProjectCarousel = ({ projects }: { projects: Project[] }) => {
       {/* Carousel Track */}
       <div
         ref={scrollRef}
-        className="flex gap-8 overflow-x-auto snap-x snap-mandatory pb-4
-          scrollbar-none scroll-smooth touch-pan-x
-          pl-20
-        "
+        id="projects-carousel-track"
+        className="flex overflow-x-auto snap-x snap-mandatory scrollbar-none scroll-smooth"
         style={{ scrollSnapType: "x mandatory" }}
       >
         {projects.map((project, idx) => (
           <div
             key={idx}
-            className="min-w-[75%] mx-auto snap-center transform transition-transform duration-300 hover:scale-[1.02]"
+            id={`project-slide-${idx}`}
+            className="min-w-full flex justify-center snap-center px-6"
           >
             <ProjectCard {...project} />
           </div>
         ))}
       </div>
-      <div className="flex justify-center gap-3 mt-6">
+      <div
+        id="projects-carousel-indicators"
+        className="flex justify-center gap-3 mt-6"
+      >
         {projects.map((_, i) => (
           <div
             key={i}
             className={`w-3 h-3 rounded-full transition-all ${
-              i === activeIndex ? "bg-slate-900 scale-110" : "bg-slate-300"
+              i === activeIndex
+                ? "bg-slate-900 scale-110 dark:bg-white"
+                : "bg-slate-300 dark:bg-white/25"
             }`}
           />
         ))}

@@ -1,34 +1,41 @@
 "use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 
 import type { Project } from "@/types/project";
 
 const ProjectCard = ({ title, description, image, tech, links }: Project) => {
   return (
-    <div className="group bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 min-h-[520px] flex flex-col justify-between">
+    <div
+      id={`project-card-${title.toLowerCase().replace(/\s+/g, "-")}`}
+      className="group w-full max-w-3xl rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between bg-white border border-gray-200 dark:bg-[#0f172a]/70 dark:border-white/10 dark:shadow-black/20"
+    >
       {/* Image */}
-      <div className="relative w-full h-60 rounded-xl overflow-hidden flex-shrink-0">
+      <div className="relative w-full h-60 rounded-xl overflow-hidden flex-shrink-0 bg-white dark:bg-white/5">
         <Image
           src={image}
           alt={`${title} Thumbnail`}
           fill
-          className="object-contain bg-white transition-transform duration-500 group-hover:scale-105"
+          className="object-contain bg-white dark:bg-transparent transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-white/10 pointer-events-none" />
+        <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-white/20 to-white/0 dark:from-white/5 dark:to-transparent" />
       </div>
 
       <div className="flex-grow mt-6">
-        <h3 className="text-2xl font-semibold text-gray-900">{title}</h3>
-        <p className="mt-3 text-slate-600 leading-relaxed">{description}</p>
+        <h3 className="text-2xl font-semibold text-gray-900 dark:text-slate-100">
+          {title}
+        </h3>
+        <p className="mt-3 text-slate-600 dark:text-slate-300 leading-relaxed">
+          {description}
+        </p>
 
         {/* Tech badges */}
         <div className="mt-4 flex flex-wrap gap-2">
           {tech.map((item) => (
             <span
               key={item}
-              className="px-3 py-1 text-sm bg-slate-100 rounded-full text-slate-700"
+              className="px-3 py-1 text-sm rounded-full bg-slate-100 text-slate-700 dark:bg-white/10 dark:text-slate-200"
             >
               {item}
             </span>
@@ -41,7 +48,7 @@ const ProjectCard = ({ title, description, image, tech, links }: Project) => {
         {links.caseStudy && (
           <Link
             href={links.caseStudy}
-            className="px-5 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-700 transition"
+            className="px-5 py-2 rounded-lg transition bg-slate-900 text-white hover:bg-slate-700 dark:bg-white/10 dark:text-slate-100 dark:hover:bg-white/15"
           >
             Case Study
           </Link>
@@ -51,7 +58,7 @@ const ProjectCard = ({ title, description, image, tech, links }: Project) => {
           <Link
             href={links.demo}
             target="_blank"
-            className="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition"
+            className="px-5 py-2 rounded-lg transition bg-blue-600 text-white hover:bg-blue-500 dark:bg-indigo-500/90 dark:hover:bg-indigo-400"
           >
             Demo
           </Link>
@@ -61,7 +68,7 @@ const ProjectCard = ({ title, description, image, tech, links }: Project) => {
           <Link
             href={links.github}
             target="_blank"
-            className="px-5 py-2 border border-gray-300 text-gray-800 rounded-lg hover:bg-gray-50 transition"
+            className="px-5 py-2 rounded-lg transition border border-gray-300 text-gray-800 hover:bg-gray-50 dark:border-white/15 dark:text-slate-100 dark:hover:bg-white/10"
           >
             GitHub
           </Link>
@@ -71,7 +78,7 @@ const ProjectCard = ({ title, description, image, tech, links }: Project) => {
           <Link
             href={links.live}
             target="_blank"
-            className="px-5 py-2 border border-gray-300 text-gray-800 rounded-lg hover:bg-gray-50 transition"
+            className="px-5 py-2 rounded-lg transition border border-gray-300 text-gray-800 hover:bg-gray-50 dark:border-white/15 dark:text-slate-100 dark:hover:bg-white/10"
           >
             Live Site
           </Link>
