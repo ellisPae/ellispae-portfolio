@@ -1,32 +1,35 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, Variants } from "framer-motion";
 
 import { skills } from "@/lib/skillsData";
 
 const Skills = () => {
   const shouldReduceMotion = useReducedMotion();
 
-  const container = {
+  const container: Variants = {
     hidden: { opacity: 0, y: 16 },
     show: {
       opacity: 1,
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
         when: "beforeChildren",
         staggerChildren: 0.06,
       },
     },
   };
 
-  const item = {
+  const item: Variants = {
     hidden: { opacity: 0, y: 6 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.35, ease: "easeOut" },
+      transition: {
+        duration: 0.35,
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+      },
     },
   };
 
