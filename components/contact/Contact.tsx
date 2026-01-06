@@ -63,6 +63,7 @@ export default function Contact() {
 
       {isSubmitSuccessful && (
         <motion.div
+          id="contact-success"
           className="mb-6 inline-flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-emerald-800 dark:border-emerald-400/20 dark:bg-emerald-400/10 dark:text-emerald-200"
           initial={{ opacity: 0, y: 10, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -167,12 +168,16 @@ export default function Contact() {
         />
 
         {submitError && (
-          <p className="text-red-600 dark:text-red-400 text-sm font-medium">
+          <p
+            id="contact-submit-error"
+            className="text-red-600 dark:text-red-400 text-sm font-medium"
+          >
             {submitError}
           </p>
         )}
 
         <button
+          id="contact-submit"
           type="submit"
           disabled={isSubmitting}
           className="self-start mt-3 inline-flex items-center justify-center px-6 py-2.5 rounded-xl bg-neutral-900 text-white font-medium hover:bg-neutral-800 hover:shadow-sm active:scale-[0.98] transition disabled:opacity-50 dark:bg-white/10 dark:text-neutral-100 dark:hover:bg-white/15"
