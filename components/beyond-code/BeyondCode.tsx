@@ -40,15 +40,17 @@ const BeyondCode = () => {
         viewport={{ once: true, amount: 0.2 }}
       >
         <div className="max-w-2xl mb-6">
-          <h2 className="text-3xl font-semibold mb-2">Beyond Code</h2>
-          <p className="text-sm text-neutral-500">
+          <h2 className="text-3xl font-semibold mb-2 text-neutral-900 dark:text-neutral-100">
+            Beyond Code
+          </h2>
+          <p className="text-sm text-neutral-500 dark:text-neutral-400">
             A few things I enjoy outside of building software.
           </p>
         </div>
 
         <motion.div
           variants={item}
-          className="rounded-2xl border border-neutral-200 bg-white/60 p-6 sm:p-8"
+          className="rounded-2xl border border-neutral-200 bg-white/60 p-6 sm:p-8 dark:border-white/10 dark:bg-white/5"
         >
           <GolfModule />
         </motion.div>
@@ -64,7 +66,7 @@ const BeyondCode = () => {
       >
         <motion.div
           variants={item}
-          className="rounded-2xl border border-neutral-200 bg-white/60 p-6 sm:p-8"
+          className="rounded-2xl border border-neutral-200 bg-white/60 p-6 sm:p-8 dark:border-white/10 dark:bg-white/5"
         >
           <MusicModule />
         </motion.div>
