@@ -1,21 +1,24 @@
 const Lessons = () => {
   return (
-    <section className="w-full max-w-3xl mx-auto space-y-6">
-      <p className="font-mono text-xs uppercase tracking-widest text-slate-500">
+    <section
+      id="veritas-hire-lessons"
+      className="w-full max-w-3xl mx-auto space-y-6"
+    >
+      <p className="font-mono text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400">
         Lessons
       </p>
 
-      <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
+      <h2 className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-neutral-100">
         Balancing technical capability with clarity and trust
       </h2>
 
-      <p className="text-[17px] leading-relaxed text-slate-700">
+      <p className="text-[17px] leading-relaxed text-slate-700 dark:text-neutral-200/90">
         Building Veritas Hire reinforced the importance of restraint when
         applying AI to user-facing systems. Sophisticated models are only
         valuable if users can understand, trust, and act on their outputs.
       </p>
 
-      <ul className="list-disc list-inside space-y-2 text-[17px] leading-relaxed text-slate-700">
+      <ul className="list-disc list-inside space-y-2 text-[17px] leading-relaxed text-slate-700 dark:text-neutral-200/90">
         <li>
           Designing AI-assisted workflows with an emphasis on transparency
           rather than opaque or purely algorithmic scoring.

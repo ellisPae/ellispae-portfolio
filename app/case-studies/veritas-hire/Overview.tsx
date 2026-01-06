@@ -1,22 +1,25 @@
 const Overview = () => {
   return (
-    <section className="w-full max-w-3xl mx-auto space-y-6">
-      <p className="font-mono text-xs uppercase tracking-widest text-slate-500">
+    <section
+      id="veritas-hire-overview"
+      className="w-full max-w-3xl mx-auto space-y-6"
+    >
+      <p className="font-mono text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400">
         Overview
       </p>
 
-      <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
+      <h2 className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-neutral-100">
         A clearer way to understand role alignment
       </h2>
 
-      <p className="text-[17px] leading-relaxed text-slate-700">
+      <p className="text-[17px] leading-relaxed text-slate-700 dark:text-neutral-200/90">
         Veritas Hire translates unstructured resume data into structured,
         role-specific insight. Instead of producing generic summaries, the
         platform evaluates resumes across clearly defined dimensions such as
         skills alignment, experience depth, and growth potential.
       </p>
 
-      <p className="text-[17px] leading-relaxed text-slate-700">
+      <p className="text-[17px] leading-relaxed text-slate-700 dark:text-neutral-200/90">
         The goal is not to rank candidates, but to provide clarity. By making
         evaluation criteria visible and consistent, Veritas Hire helps users
         understand where they stand, what gaps exist, and how they can improve
