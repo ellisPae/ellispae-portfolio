@@ -33,32 +33,56 @@ const Skills = () => {
   return (
     <motion.section
       id="skills"
-      className="w-full max-w-6xl mx-auto px-6 sm:px-8 pt-20 pb-20 snap-start min-h-screen flex items-center scroll-mt-5 will-change-transform"
+      className="w-full max-w-6xl mx-auto px-6 sm:px-8 pt-26 pb-28 snap-start flex items-center scroll-mt-5 will-change-transform"
       variants={container}
       initial={shouldReduceMotion ? "show" : "hidden"}
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}
     >
       <div className="w-full">
-        <div className="max-w-2xl mb-10">
-          <h2 className="text-3xl font-semibold tracking-tight">Skills</h2>
-          <p className="mt-2 text-sm text-neutral-500">
+        <div className="max-w-2xl mb-13">
+          <h2
+            id="skills-heading"
+            className="text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100"
+          >
+            Skills
+          </h2>
+          <p
+            id="skills-description"
+            className="mt-2 text-sm text-neutral-500 dark:text-neutral-400"
+          >
             A snapshot of the stack, tools, and practices I use to ship.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-6">
+        <div
+          id="skills-grid"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-14 gap-y-10 lg:gap-y-14"
+        >
           {Object.entries(skills).map(([category, items]) => (
             <motion.div
               key={category}
+              id={`skills-category-${category
+                .toLowerCase()
+                .replace(/\s+/g, "-")}`}
               variants={item}
-              className="rounded-xl border border-transparent hover:border-neutral-200/70 hover:bg-neutral-50/40 transition-colors"
+              className="rounded-xl transition-colors dark:bg-transparent"
             >
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-neutral-600 mb-3 pb-1 border-b border-neutral-200">
+              <h3
+                id={`skills-category-title-${category
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")}`}
+                className="text-sm font-semibold uppercase tracking-wide text-neutral-600 dark:text-neutral-300 mb-4 pb-2 border-b border-neutral-300 dark:border-white/20"
+              >
                 {category}
               </h3>
 
-              <ul className="space-y-1.5 text-sm text-neutral-800 leading-relaxed">
+              <ul
+                id={`skills-category-list-${category
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")}`}
+                className="space-y-2.5 text-sm text-neutral-800 dark:text-neutral-200/90 leading-relaxed"
+              >
                 {items.map((skill) => (
                   <li key={skill}>{skill}</li>
                 ))}

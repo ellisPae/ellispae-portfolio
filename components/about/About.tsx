@@ -36,8 +36,16 @@ const About = () => {
           }}
         >
           <div>
-            <h2 className="text-3xl font-semibold tracking-tight">About</h2>
-            <p className="mt-2 text-sm text-neutral-500">
+            <h2
+              id="about-heading"
+              className="text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100"
+            >
+              About
+            </h2>
+            <p
+              id="about-subheading"
+              className="mt-2 text-sm text-neutral-500 dark:text-neutral-400"
+            >
               Curiosity, craft, and work that earns trust.
             </p>
           </div>
@@ -53,7 +61,10 @@ const About = () => {
             },
           }}
         >
-          <p className="text-lg text-neutral-700 leading-relaxed">
+          <p
+            id="about-paragraph-1"
+            className="text-lg text-neutral-700 dark:text-neutral-200/90 leading-relaxed"
+          >
             I’m a software engineer driven by curiosity and a desire to
             understand how systems work, why they break, and how to make them
             better. I enjoy breaking down complex problems, asking good
@@ -72,7 +83,10 @@ const About = () => {
             },
           }}
         >
-          <p className="text-lg text-neutral-700 leading-relaxed">
+          <p
+            id="about-paragraph-2"
+            className="text-lg text-neutral-700 dark:text-neutral-200/90 leading-relaxed"
+          >
             My background spans full-stack development, quality engineering, and
             production ownership. That range has shaped how I build: with care
             for user experience, respect for maintainability, and attention to
@@ -90,7 +104,10 @@ const About = () => {
             },
           }}
         >
-          <p className="text-lg text-neutral-700 leading-relaxed">
+          <p
+            id="about-paragraph-3"
+            className="text-lg text-neutral-700 dark:text-neutral-200/90 leading-relaxed"
+          >
             I’m motivated by work that has real impact. Software that helps
             people, improves processes, and creates trust through thoughtful
             design and technical excellence matters deeply to me. I’m always
@@ -109,7 +126,10 @@ const About = () => {
             },
           }}
         >
-          <p className="text-lg text-neutral-700 leading-relaxed">
+          <p
+            id="about-paragraph-4"
+            className="text-lg text-neutral-700 dark:text-neutral-200/90 leading-relaxed"
+          >
             Outside of work, you’ll usually find me exploring new coffee,
             traveling, playing golf, or learning something new simply for the
             joy of it.

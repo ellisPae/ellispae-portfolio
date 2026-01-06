@@ -6,7 +6,10 @@ import { ExperienceItem } from "./ExperienceItem";
 const ExperienceTimeline = () => {
   return (
     <div className="relative mt-4 sm:mt-6" id="experience-timeline">
-      <div className="absolute left-3 sm:left-5 top-0 h-full w-px bg-neutral-200" />
+      <div
+        id="experience-timeline-line"
+        className="absolute left-3 sm:left-5 top-0 h-full w-px bg-neutral-200 dark:bg-white/10"
+      />
 
       <div className="space-y-8 sm:space-y-10">
         {experience.map((item, index) => (

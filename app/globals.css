@@ -1,7 +1,10 @@
 @import "tailwindcss";
 
+/* Enable class-based dark mode for Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* -------------------------------------------------------
-   Global Fade Animations — slow, elegant, architectural
+   Global Fade Animations
 -------------------------------------------------------- */
 @layer utilities {
   .animate-fadeIn {
@@ -19,7 +22,6 @@
     }
   }
 
-  /* Stagger utilities */
   .fade-delay-1 {
     animation-delay: 0.2s;
   }
@@ -32,25 +34,52 @@
 }
 
 /* -------------------------------------------------------
-   Smooth Scrolling + Section Snap Support
+   Scroll behavior
 -------------------------------------------------------- */
 html {
   scroll-behavior: smooth;
 }
 
-/* -------------------------------------------------------
-   Typography + Color Theme (clean, minimal, modern)
--------------------------------------------------------- */
+html,
 body {
-  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: #ffffff;
-  color: #111827;
-  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 /* -------------------------------------------------------
-   Carousel & Overflow Behavior
+   Global Theme Tokens (THIS IS THE KEY PART)
+-------------------------------------------------------- */
+:root {
+  --bg: #ffffff;
+  --fg: #111827;
+}
+
+/* Dark navy — matches Hero background */
+html.dark {
+  --bg: #050816;   /* unified dark navy */
+  --fg: #e5e7eb;   /* soft readable text */
+}
+
+body {
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  background-color: var(--bg);
+  color: var(--fg);
+
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Proper form controls & scrollbars */
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+/* -------------------------------------------------------
+   Carousel & Overflow
 -------------------------------------------------------- */
 .scrollbar-none::-webkit-scrollbar {
   display: none;
@@ -61,8 +90,50 @@ body {
 }
 
 /* -------------------------------------------------------
-   Utility: Subtle soft shadow for cards
+   Utility: Soft shadow
 -------------------------------------------------------- */
 .soft-shadow {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+}
+
+/* -------------------------------------------------------
+   Theme toggle animations
+-------------------------------------------------------- */
+@keyframes earthSpinPop {
+  0%   { transform: rotate(0deg) scale(1); opacity: 0; }
+  20%  { opacity: 1; }
+  70%  { transform: rotate(300deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1); opacity: 0; }
+}
+
+
+.theme-earth {
+  transform-origin: 50% 50%;
+  opacity: 0;
+}
+
+.theme-earth-emoji {
+  /* Overlay directly on top of the toggle icon */
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+
+  transform-origin: 50% 50%;
+  opacity: 0;
+  line-height: 1;
+}
+
+.theme-earth.is-animating,
+.theme-earth-emoji.is-animating {
+  animation: earthSpinPop 650ms ease-in-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-earth.is-animating,
+  .theme-earth-emoji.is-animating {
+    animation: none;
+    opacity: 0;
+  }
 }
