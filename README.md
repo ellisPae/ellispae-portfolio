@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ellis Pae — Portfolio
 
-## Getting Started
+A modern, responsive personal portfolio showcasing my work as a full-stack software engineer. Built with a strong focus on clean UI, thoughtful motion, accessibility, and intentional design decisions across light and dark themes.
 
-First, run the development server:
+🔗 **Live Site:** https://www.ellispae.com
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## ✨ Features
+
+- **Light & Dark Mode**
+  - Light mode as the default
+  - Manually controlled dark mode toggle
+  - Smooth animated transition between sun → earth → moon
+  - Dark mode designed with a deep navy palette instead of pure black
+
+- **Modern UI & Motion**
+  - Subtle, intentional animations using Framer Motion
+  - Respects reduced-motion user preferences
+  - Clean typography and spacing optimized for readability
+
+- **Fully Responsive**
+  - Optimized for desktop, tablet, and mobile
+  - Consistent layout and spacing across breakpoints
+
+- **Semantic Structure**
+  - Meaningful `id` attributes across sections for navigation, accessibility, and anchor linking
+  - Clear separation of concerns across components
+
+- **Performance & Best Practices**
+  - Built with Next.js App Router
+  - Optimized production builds
+  - Deployed on Vercel with custom domain and SSL
+
+---
+
+## 🧱 Tech Stack
+
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Animations:** Framer Motion
+- **Deployment:** Vercel
+- **Domain & DNS:** Custom domain with DNS managed via Squarespace
+
+---
+
+## 📂 Project Structure
+```
+  components/
+  ├─ navbar/
+  ├─ hero/
+  ├─ projects/
+  ├─ experience/
+  ├─ skills/
+  ├─ about/
+  ├─ beyond-code/
+  ├─ contact/
+  └─ footer/
+
+  lib/
+  ├─ projectsData.ts
+  ├─ skillsData.ts
+  └─ experienceData.ts
+
+  app/
+  ├─ page.tsx
+  ├─ layout.tsx
+  └─ globals.css
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 📌 Purpose
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This portfolio is both:
+  - A representation of my work and design philosophy
+  - A real production application, not a template or demo
 
-## Learn More
+Every section, animation, and styling choice reflects how I approach building thoughtful, maintainable, user-focused software.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 📫 Contact
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If you’d like to connect or learn more:
+  - Website: https://www.ellispae.com
+  - LinkedIn: Linked on the site
+  - GitHub: Linked on the site
