@@ -15,7 +15,31 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Ellis Pae | Software Engineer",
   description:
-    "Full-stack software engineer building thoughtful, modern digital experiences.",
+    "Full-stack software engineer building clean, modern, and meaningful digital experiences.",
+  metadataBase: new URL("https://www.ellispae.com"),
+  openGraph: {
+    title: "Ellis Pae | Software Engineer",
+    description:
+      "Full-stack software engineer building clean, modern, and meaningful digital experiences.",
+    url: "https://www.ellispae.com",
+    siteName: "Ellis Pae",
+    images: [
+      {
+        url: "/Ellis_Pae_Portfolio_Profile_Pic.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Ellis Pae — Software Engineer",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ellis Pae | Software Engineer",
+    description:
+      "Full-stack software engineer building clean, modern, and meaningful digital experiences.",
+    images: ["/Ellis_Pae_Portfolio_Profile_Pic.jpeg"],
+  },
 };
 
 export default function RootLayout({
