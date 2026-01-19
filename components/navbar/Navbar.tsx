@@ -27,6 +27,8 @@ const Navbar = () => {
   const panelRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
+  const [beyondCodeDropdownOpen, setBeyondCodeDropdownOpen] = useState(false);
+
   const navItems: NavItem[] = useMemo(
     () => [
       { label: "Projects", href: "#projects" },
@@ -35,6 +37,14 @@ const Navbar = () => {
       { label: "About", href: "#about" },
       { label: "Beyond Code", href: "#beyond-code" },
       { label: "Contact", href: "#contact" },
+    ],
+    []
+  );
+
+  const beyondCodeSubItems: NavItem[] = useMemo(
+    () => [
+      { label: "Golf", href: "#beyond-code" },
+      { label: "Music", href: "#beyond-code-music" },
     ],
     []
   );
@@ -86,7 +96,6 @@ const Navbar = () => {
     return () => window.removeEventListener("pointerdown", onPointerDown);
   }, [open]);
 
-  // Prevent background scroll while mobile menu is open
   useEffect(() => {
     if (!open) return;
     const prev = document.body.style.overflow;
@@ -174,18 +183,51 @@ const Navbar = () => {
         </Link>
 
         <div className="hidden md:flex items-center gap-6 font-semibold text-[0.95rem]">
-          {navItems.map((item) => (
-            <Link
-              id={`nav-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
-              key={item.href}
-              href={item.href}
-              onClick={handleNavClick(item.href)}
-              className="text-gray-700 dark:text-neutral-200 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 relative group focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900/30 dark:focus-visible:ring-white/20 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-neutral-950 rounded"
-            >
-              {item.label}
-              <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-blue-600 dark:bg-indigo-400 rounded-full transition-all duration-300 group-hover:w-full" />
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const isBeyondCode = item.label === "Beyond Code";
+
+            return isBeyondCode ? (
+              <div key={item.href} className="relative group">
+                <button
+                  id={`nav-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
+                  onClick={() =>
+                    setBeyondCodeDropdownOpen(!beyondCodeDropdownOpen)
+                  }
+                  className="text-gray-700 dark:text-neutral-200 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 relative focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900/30 dark:focus-visible:ring-white/20 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-neutral-950 rounded"
+                >
+                  {item.label}
+                  <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-blue-600 dark:bg-indigo-400 rounded-full transition-all duration-300 group-hover:w-full" />
+                </button>
+
+                <div className="absolute left-0 mt-2 w-32 bg-white dark:bg-neutral-900 rounded-lg shadow-lg border border-gray-200 dark:border-neutral-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                  {beyondCodeSubItems.map((subItem) => (
+                    <Link
+                      key={subItem.href}
+                      id={`nav-${subItem.label.toLowerCase()}`}
+                      href={subItem.href}
+                      onClick={handleNavClick(subItem.href, () =>
+                        setBeyondCodeDropdownOpen(false)
+                      )}
+                      className="block px-4 py-2.5 text-gray-700 dark:text-neutral-200 first:rounded-t-lg last:rounded-b-lg transition-all duration-150 hover:bg-blue-50 dark:hover:bg-neutral-800/60 hover:text-blue-600 dark:hover:text-indigo-300 relative hover:scale-105 hover:pl-5 origin-left"
+                    >
+                      {subItem.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <Link
+                id={`nav-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
+                key={item.href}
+                href={item.href}
+                onClick={handleNavClick(item.href)}
+                className="text-gray-700 dark:text-neutral-200 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 relative group focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900/30 dark:focus-visible:ring-white/20 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-neutral-950 rounded"
+              >
+                {item.label}
+                <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-blue-600 dark:bg-indigo-400 rounded-full transition-all duration-300 group-hover:w-full" />
+              </Link>
+            );
+          })}
           <button
             id="theme-toggle"
             type="button"
@@ -294,19 +336,59 @@ const Navbar = () => {
                 )}
               </span>
             </button>
-            {navItems.map((item) => (
-              <Link
-                id={`mobile-nav-${item.label
-                  .toLowerCase()
-                  .replace(/\s+/g, "-")}`}
-                key={item.href}
-                href={item.href}
-                onClick={handleNavClick(item.href, () => setOpen(false))}
-                className="text-gray-900 dark:text-neutral-100 hover:text-blue-600 dark:hover:text-indigo-300 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600/30 dark:focus-visible:ring-indigo-300/30 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-neutral-950 rounded px-2 py-1"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const isBeyondCode = item.label === "Beyond Code";
+
+              return isBeyondCode ? (
+                <div
+                  key={item.href}
+                  className="w-full flex flex-col items-center"
+                >
+                  <button
+                    id={`mobile-nav-${item.label
+                      .toLowerCase()
+                      .replace(/\s+/g, "-")}`}
+                    onClick={() =>
+                      setBeyondCodeDropdownOpen(!beyondCodeDropdownOpen)
+                    }
+                    className="text-gray-900 dark:text-neutral-100 hover:text-blue-600 dark:hover:text-indigo-300 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600/30 dark:focus-visible:ring-indigo-300/30 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-neutral-950 rounded px-2 py-1"
+                  >
+                    {item.label}
+                  </button>
+
+                  {beyondCodeDropdownOpen && (
+                    <div className="w-full flex flex-col items-center gap-2 mt-2 pt-2 border-t border-gray-200 dark:border-neutral-700">
+                      {beyondCodeSubItems.map((subItem) => (
+                        <Link
+                          key={subItem.href}
+                          id={`mobile-nav-${subItem.label.toLowerCase()}`}
+                          href={subItem.href}
+                          onClick={handleNavClick(subItem.href, () => {
+                            setOpen(false);
+                            setBeyondCodeDropdownOpen(false);
+                          })}
+                          className="text-gray-700 dark:text-neutral-300 transition-all duration-150 text-sm px-3 py-2 rounded hover:bg-blue-50 dark:hover:bg-neutral-800/60 hover:text-blue-600 dark:hover:text-indigo-300 hover:scale-105 hover:pl-4 origin-left"
+                        >
+                          {subItem.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  id={`mobile-nav-${item.label
+                    .toLowerCase()
+                    .replace(/\s+/g, "-")}`}
+                  key={item.href}
+                  href={item.href}
+                  onClick={handleNavClick(item.href, () => setOpen(false))}
+                  className="text-gray-900 dark:text-neutral-100 hover:text-blue-600 dark:hover:text-indigo-300 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600/30 dark:focus-visible:ring-indigo-300/30 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-neutral-950 rounded px-2 py-1"
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </div>
         </div>
       )}
