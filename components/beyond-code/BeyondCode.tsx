@@ -42,7 +42,7 @@ const BeyondCode = () => {
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
       >
-        <div className="max-w-2xl mb-6">
+        <div className="max-w-2xl mb-12 pb-8 border-b border-neutral-200 dark:border-white/10">
           <h2 className="text-3xl font-semibold mb-2 text-neutral-900 dark:text-neutral-100">
             Beyond Code
           </h2>
@@ -51,10 +51,7 @@ const BeyondCode = () => {
           </p>
         </div>
 
-        <motion.div
-          variants={item}
-          className="rounded-2xl border border-neutral-200 bg-white/60 p-6 sm:p-8 dark:border-white/10 dark:bg-white/5"
-        >
+        <motion.div variants={item}>
           <GolfModule />
         </motion.div>
       </motion.section>
@@ -67,10 +64,7 @@ const BeyondCode = () => {
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
       >
-        <motion.div
-          variants={item}
-          className="rounded-2xl border border-neutral-200 bg-white/60 p-6 sm:p-8 dark:border-white/10 dark:bg-white/5"
-        >
+        <motion.div variants={item}>
           <MusicModule />
         </motion.div>
       </motion.section>

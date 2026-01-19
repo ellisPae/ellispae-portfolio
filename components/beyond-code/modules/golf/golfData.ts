@@ -1,6 +1,7 @@
 export const golfData = {
   summary: {
     averageScore: 101.3,
+    handicap: 23.2,
     bestRound: 91,
     recentRounds: [94, 97, 98],
   },
