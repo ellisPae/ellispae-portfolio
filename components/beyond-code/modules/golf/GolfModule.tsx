@@ -21,7 +21,16 @@ const GolfModule = () => {
           Summary
         </h4>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-4 gap-5">
+          <div>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400">
+              Handicap
+            </p>
+            <p className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+              {golfData.summary.handicap}
+            </p>
+          </div>
+
           <div>
             <p className="text-sm text-neutral-500 dark:text-neutral-400">
               Average Score
