@@ -8,7 +8,7 @@ const Experience = () => {
   return (
     <motion.section
       id="experience"
-      className="w-full max-w-6xl mx-auto px-6 sm:px-8 pt-10 sm:pt-12 pb-20 snap-start scroll-mt-17"
+      className="w-full max-w-6xl mx-auto px-6 sm:px-8 pt-10 sm:pt-12 pb-20 snap-start scroll-mt-20"
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}

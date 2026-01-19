@@ -36,7 +36,7 @@ const Skills = () => {
   return (
     <motion.section
       id="skills"
-      className="w-full max-w-6xl mx-auto px-6 sm:px-8 pt-26 pb-28 snap-start flex items-center scroll-mt-5 will-change-transform"
+      className="w-full max-w-6xl mx-auto px-6 sm:px-8 pt-26 pb-28 snap-start flex items-center scroll-mt-10 will-change-transform"
       variants={container}
       initial={shouldReduceMotion ? "show" : "hidden"}
       whileInView="show"
