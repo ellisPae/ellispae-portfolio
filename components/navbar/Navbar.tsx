@@ -8,8 +8,6 @@ type NavItem = {
   href: string;
 };
 
-const NAV_OFFSET_PX = 80;
-
 const THEME_STORAGE_KEY = "theme";
 
 function applyTheme(next: "light" | "dark") {
@@ -105,39 +103,9 @@ const Navbar = () => {
     };
   }, [open]);
 
-  const scrollToHash = (href: string) => {
-    if (!href.startsWith("#")) return;
-
-    const target = document.querySelector(href) as HTMLElement | null;
-    if (!target) return;
-
-    const computed = window.getComputedStyle(target);
-    const scrollMarginTop =
-      parseFloat(computed.scrollMarginTop || "0") || NAV_OFFSET_PX;
-
-    const main = document.querySelector("main") as HTMLElement | null;
-    const prevSnapType = main?.style.scrollSnapType;
-
-    if (main) main.style.scrollSnapType = "none";
-
-    const top =
-      target.getBoundingClientRect().top + window.scrollY - scrollMarginTop;
-
-    window.scrollTo({ top, behavior: "smooth" });
-
-    window.setTimeout(() => {
-      if (!main) return;
-      if (prevSnapType) main.style.scrollSnapType = prevSnapType;
-      else main.style.scrollSnapType = "";
-    }, 650);
-  };
-
   const handleNavClick =
     (href: string, closeMenu?: () => void) => (e: MouseEvent) => {
-      if (!href.startsWith("#")) return;
-      e.preventDefault();
       closeMenu?.();
-      scrollToHash(href);
     };
 
   const handleLogoClick = (e: MouseEvent) => {
