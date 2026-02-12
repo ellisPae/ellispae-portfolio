@@ -9,7 +9,9 @@ const ExperienceItem = ({ experience }: ExperienceItemProps) => {
 
   return (
     <div
-      id={`experience-item-${company.toLowerCase().replace(/\s+/g, "-")}`}
+      id={`experience-item-${company.toLowerCase().replace(/\s+/g, "-")}-${role
+        .toLowerCase()
+        .replace(/\s+/g, "-")}`}
       className="relative flex gap-8"
     >
       <div className="relative z-10 mt-2 h-3 w-3 rounded-full bg-neutral-900 dark:bg-indigo-200 shadow-sm" />

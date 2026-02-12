@@ -7,7 +7,7 @@ export const experience: Experience[] = [
     date: "Jan 2023 – Present",
     bullets: [
       "Built and maintained the church’s production website using React, Next.js, TypeScript, and AWS S3 to deliver dynamic content for sermons, events, and community resources",
-      "Designed and launched a sermon platform powered by Sanity CMS and GraphQL, featuring modern layouts, summaries, and advanced filtering to improve discoverability and engagement",
+      "Designed and built a responsive Sermons platform using Sanity CMS + GraphQL, implementing structured content models, series-based navigation, advanced filtering, and SEO schema to improve discoverability and engagement",
       "Improved content organization, URL consistency, and publishing workflows through CMS automation and structured content models",
       "Optimized site performance, SEO, and reliability while integrating third-party services to expand accessibility and reduce manual maintenance",
     ],
