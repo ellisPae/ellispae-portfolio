@@ -44,14 +44,14 @@ const ProjectCarousel = ({ projects }: { projects: Project[] }) => {
       {/* Scroll Buttons */}
       <button
         onClick={() => scroll("left")}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-30 rounded-full px-2 py-2 backdrop-blur-md shadow-md transition bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15"
+        className="hidden sm:inline-flex absolute left-2 top-1/2 -translate-y-1/2 z-30 rounded-full px-2 py-2 backdrop-blur-md shadow-md transition bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15"
       >
         ←
       </button>
 
       <button
         onClick={() => scroll("right")}
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-30 rounded-full px-2 py-2 backdrop-blur-md shadow-md transition bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15"
+        className="hidden sm:inline-flex absolute right-2 top-1/2 -translate-y-1/2 z-30 rounded-full px-2 py-2 backdrop-blur-md shadow-md transition bg-white/80 hover:bg-white dark:bg-white/10 dark:hover:bg-white/15"
       >
         →
       </button>
@@ -60,14 +60,14 @@ const ProjectCarousel = ({ projects }: { projects: Project[] }) => {
       <div
         ref={scrollRef}
         id="projects-carousel-track"
-        className="flex overflow-x-auto snap-x snap-mandatory scrollbar-none scroll-smooth"
+        className="flex overflow-x-auto snap-x snap-mandatory scrollbar-none scroll-smooth gap-4 sm:gap-0"
         style={{ scrollSnapType: "x mandatory" }}
       >
         {projects.map((project, idx) => (
           <div
             key={idx}
             id={`project-slide-${idx}`}
-            className="min-w-full flex justify-center snap-center px-6"
+            className="min-w-full flex justify-center snap-center px-2 sm:px-6"
           >
             <ProjectCard {...project} />
           </div>
@@ -75,7 +75,7 @@ const ProjectCarousel = ({ projects }: { projects: Project[] }) => {
       </div>
       <div
         id="projects-carousel-indicators"
-        className="flex justify-center gap-3 mt-6"
+        className="flex justify-center gap-3 mt-5 sm:mt-6"
       >
         {projects.map((_, i) => (
           <div
