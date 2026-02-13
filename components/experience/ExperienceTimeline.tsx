@@ -8,10 +8,11 @@ const ExperienceTimeline = () => {
     <div className="relative mt-4 sm:mt-6" id="experience-timeline">
       <div
         id="experience-timeline-line"
-        className="absolute left-3 sm:left-5 top-0 h-full w-px bg-neutral-200 dark:bg-white/10"
+        aria-hidden="true"
+        className="pointer-events-none absolute left-3 sm:left-5 md:left-6 top-0 h-full w-px bg-neutral-200/90 dark:bg-white/10"
       />
 
-      <div className="space-y-8 sm:space-y-10">
+      <div className="space-y-8 sm:space-y-10 md:space-y-12">
         {experience.map((item, index) => (
           <motion.div
             key={index}
